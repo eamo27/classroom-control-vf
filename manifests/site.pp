@@ -47,4 +47,7 @@ node default {
     ensure => file,
     content => "Eamonn's new content\n",
     }
+    exec { 'run-motd': 
+       command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
+       }
 }
