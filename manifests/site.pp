@@ -48,7 +48,7 @@ node default {
     content => "Eamonn's new content\n",
     }
     exec { 'run-motd': 
-       command => "/usr/local/bin/cowsay 'Welcome to ${::fqdn}!" ,
-       path    => "/etc/motd",
+       command => "/usr/local/bin/cowsay 'Welcome to ${::fqdn}!'" ,
+       path    => "/usr/local/bin/cowsay",
        }
 }
