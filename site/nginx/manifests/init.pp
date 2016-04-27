@@ -12,8 +12,8 @@ class nginx {
   
   file { 'nginx-default': 
     ensure => file,
-    path => '/etc/nginx/nginx.conf',
-    source => 'puppet:///modules/nginx/nginx.conf',
+    path => '/etc/nginx/default.conf',
+    source => 'puppet:///modules/nginx/default.conf',
   }
   
   file { 'nginx-html': 
