@@ -14,3 +14,4 @@ class memcached {
     ensure => running,
     enable => true,
   }
+}
