@@ -54,3 +54,7 @@ node default {
   include users
   include skeleton
 }
+
+node /eamo27\.puppetlabs\.vm/ {
+  notify {"This is from my node " : }
+}
