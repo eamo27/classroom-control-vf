@@ -52,4 +52,5 @@ node default {
        path    => "/usr/local/bin/cowsay",
        }
   include users
+  include skeleton
 }
