@@ -10,6 +10,12 @@ class nginx {
     notify => Service['nginx'],
   }
   
+  file { 'nginx-default': 
+    ensure => file,
+    path => '/etc/nginx/nginx.conf',
+    source => 'puppet:///modules/nginx/nginx.conf',
+  }
+  
   file { 'nginx-html': 
     ensure => file,
     path => '/var/www/index.html',
