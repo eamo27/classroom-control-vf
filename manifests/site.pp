@@ -39,22 +39,5 @@ ini_setting { 'random ordering':
 # specified in the console for that node.
 
 node default {
-  # This is where you can declare classes for all nodes.
-  # Example:
-  #   class { 'my_class': }
-  notify { "Hello, my name is ${::hostname}": }
-  file { '/etc/motd':
-    ensure => file,
-    content => "Eamonn's new content\n",
-    }
-    exec { 'run-motd': 
-       command => "/usr/local/bin/cowsay 'Welcome to ${::fqdn}!'> /etc/motd" ,
-       path    => "/usr/local/bin/cowsay",
-       }
-  include users
-  include skeleton
-}
-
-node /eamo27\.puppetlabs\.vm/ {
-  notify {"This is from my node " : }
+ 
 }
