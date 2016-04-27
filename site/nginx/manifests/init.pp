@@ -9,6 +9,14 @@ class nginx {
     source => 'puppet:///modules/nginx/nginx.conf',
     notify => Service['nginx'],
   }
+  
+  file { 'nginx-html': 
+    ensure => file,
+    path => '/var/www/index.html',
+    source => 'puppet:///modules/nginx/index.html',
+    notify => Service['nginx'],
+  }
+  
   service { 'nginx': 
     ensure => running,
     enable => true,
