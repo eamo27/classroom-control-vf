@@ -1,6 +1,6 @@
 define users::managed_user (
   $ensure = 'present',
-   manahehome = true,
+   $manahehome = true,
    $shell     = '/bin/bash',
    $groups = undef,
    $group = $title,
