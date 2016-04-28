@@ -1,3 +1,10 @@
+node default {
+class { 'nginx':
+root => '/var/www/html',
+}
+}
+
+
 class nginx (
 $root = undef,
 ) {
