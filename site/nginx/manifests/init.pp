@@ -1,33 +1,46 @@
 class nginx {
-  package { 'nginx': 
-    ensure => present,
-    before => File['nginx'],
-  }
-  file { 'nginx': 
-    ensure => file,
-    path => '/etc/nginx/nginx.conf',
-    source => 'puppet:///modules/nginx/nginx.conf',
-    notify => Service['nginx'],
-  } 
-  
-  file { 'nginx-default': 
-    ensure => file,
-    path => '/etc/nginx/default.conf',
-    source => 'puppet:///modules/nginx/default.conf',
-    notify => Service['nginx'],
-  }
-  
-  file { 'nginx-html': 
-    ensure => file,
-    path => '/var/www/index.html',
-    source => 'puppet:///modules/nginx/index.html',
-  }
-  
-  service { 'nginx': 
-    ensure => running,
-    enable => true,
-    }
+package { 'nginx':
+ensure => present,
 }
-  
-  
-
+file { '/var/www':
+ensure => directory,
+owner => 'root',
+group => 'root',
+mode => '0775',
+}
+file { '/var/www/index.html':
+ensure => file,
+owner => 'root',
+group => 'root',
+mode => '0664',
+source => 'puppet:///modules/nginx/index.html',
+}
+file { '/etc/nginx/nginx.conf':
+ensure => file,
+owner => 'root',
+group => 'root',
+mode => '0664',
+source => 'puppet:///modules/nginx/nginx.conf',
+require => Package['nginx'],
+notify => Service['nginx'],
+}
+file { '/etc/nginx/conf.d':
+ensure => directory,
+owner => 'root',
+group => 'root',
+mode => '0775',
+}
+file { '/etc/nginx/conf.d/default.conf':
+ensure => file,
+owner => 'root',
+group => 'root',
+mode => '0664',
+source => 'puppet:///modules/nginx/default.conf',
+require => Package['nginx'],
+notify => Service['nginx'],
+}
+service { 'nginx':
+ensure => running,
+enable => true,
+}
+}
