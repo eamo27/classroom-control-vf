@@ -45,5 +45,5 @@ node default {
    notify { "Configuring the $::virtual} virtual machine\n": }
  }
  $msg =  hiera('This is a heira message')
- notify {"$msg"; }
+ notify {"$msg": }
 }
