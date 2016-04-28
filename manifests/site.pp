@@ -42,8 +42,6 @@ node default {
  include memcached
  include nginx
  if $::is_virtual {
-   notify { "Configuring the ${capitalize(::virtual)}\n": 
-     capitalize => true,
-     }
+   notify { "Configuring the ${capitalize($::virtual)} virtual machine\n": }
  }
 }
