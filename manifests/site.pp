@@ -41,5 +41,9 @@ ini_setting { 'random ordering':
 node default {
  include memcached
  include nginx
- notify { "Configuring the ${::virtual}\n": }
+ if $::is_virtual {
+   notify { "Configuring the ${::virtual}\n": 
+     capitalize => true,
+     }
+ }
 }
