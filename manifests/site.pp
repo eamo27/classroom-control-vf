@@ -41,5 +41,5 @@ ini_setting { 'random ordering':
 node default {
  include memcached
  include nginx
- notify { "Configuring the ${::hostname}\n" }
+ notify { "Configuring the ${::hostname}\n": }
 }
