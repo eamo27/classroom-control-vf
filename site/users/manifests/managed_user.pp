@@ -23,6 +23,8 @@ define users::managed_user (
   file { "${home}/.ssh:
     ensure => directory,
     owner => $title,
+    group => $group,
+    mode => '0750'
   
   }
 }
