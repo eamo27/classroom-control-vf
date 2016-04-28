@@ -44,4 +44,5 @@ node default {
  if $::is_virtual {
    notify { "Configuring the $::virtual} virtual machine\n": }
  }
+ notify { "This is a heira message \n": }
 }
