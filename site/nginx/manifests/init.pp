@@ -5,14 +5,14 @@ class nginx {
   }
   file { 'nginx': 
     ensure => file,
-    path => '/etc/nginx/nginx.conf',
+    path => '/etc/nginx/conf.d/nginx.conf',
     source => 'puppet:///modules/nginx/nginx.conf',
     notify => Service['nginx'],
   }
   
   file { 'nginx-default': 
     ensure => file,
-    path => '/etc/nginx/default.conf',
+    path => '/etc/nginx/conf.d/default.conf',
     source => 'puppet:///modules/nginx/default.conf',
     notify => Service['nginx'],
   }
