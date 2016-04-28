@@ -20,8 +20,9 @@ define users::managed_user (
   group { $group:
     ensure => present,
     }
-  file { "${home}/.ssh:
+  file { ${home}/.ssh:
     ensure => directory,
+    group => $group,
     owner => $title,
     mode => '0750'
   }
