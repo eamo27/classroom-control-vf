@@ -1,10 +1,3 @@
-node default {
-class { 'nginx':
-root => '/var/www/html',
-}
-}
-
-
 class nginx (
 $root = undef,
 ) {
@@ -19,14 +12,23 @@ $logdir = '/var/log/nginx'
 # this will be used if we don't pass in a value
 $default_docroot = '/var/www'
 }
-
+'windows' : {
+$package = 'nginx-service'
+$owner = 'Administrator'
+$group = 'Administrators'
+# $docroot = 'C:/ProgramData/nginx/html'
+$confdir = 'C:/ProgramData/nginx'
+$logdir = 'C:/ProgramData/nginx/logs'
+# this will be used if we don't pass in a value
+$default_docroot = 'C:/ProgramData/nginx/html'
+}
 default : {
 fail("Module ${module_name} is not supported on ${::osfamily}")
 }
 }
 # user the service will run as. Used in the nginx.conf.erb template
-$user = $::osfamily ? {$user = $::osfamily ? {
-'redhat' => 'nginx',
+$user = $::osfamily ? {
+redhat' => 'nginx',
 'debian' => 'www-data',
 'windows' => 'nobody',
 }
