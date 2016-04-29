@@ -48,4 +48,7 @@ node default {
  #notify {"$msg": }
  #include wrappers::epel
 
+class role::wordpress{
+  include profile::wordpress
+}
 }
