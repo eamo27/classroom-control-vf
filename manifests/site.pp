@@ -48,5 +48,5 @@ node default {
  #notify {"$msg": }
  #include wrappers::epel
 
-include apache
+class { 'apache': }
 }
