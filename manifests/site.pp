@@ -46,4 +46,6 @@ node default {
  }
  #$msg =  hiera('This is a heira message')
  #notify {"$msg": }
+ include wrappers::epel
+
 }
