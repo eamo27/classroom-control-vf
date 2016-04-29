@@ -3,14 +3,14 @@ class nginx (
   ) {
   case $::osfamily {
   'redhat','debian' : {
-  $package = 'nginx'
-  $owner = 'root'
-  $group = 'root'
-  # $docroot = '/var/www'
-  $confdir = '/etc/nginx'
-  $logdir = '/var/log/nginx'
-  # this will be used if we don't pass in a value
-  $default_docroot = '/var/www'
+    $package = 'nginx'
+    $owner = 'root'
+    $group = 'root'
+    # $docroot = '/var/www'
+    $confdir = '/etc/nginx'
+    $logdir = '/var/log/nginx'
+    # this will be used if we don't pass in a value
+    $default_docroot = '/var/www'
 }
 'windows' : {
   $package = 'nginx-service'
@@ -57,7 +57,7 @@ file { "${confdir}/nginx.conf":
   content => template('nginx/nginx.conf.erb'),
   notify => Service['nginx'],
 }
-  service { 'nginx':
+service { 'nginx':
   ensure => running,
   enable => true,
  }
