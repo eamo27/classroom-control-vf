@@ -28,7 +28,7 @@ fail("Module ${module_name} is not supported on ${::osfamily}")
 }
 # user the service will run as. Used in the nginx.conf.erb template
 $user = $::osfamily ? {
-redhat' => 'nginx',
+'redhat' => 'nginx',
 'debian' => 'www-data',
 'windows' => 'nobody',
 }
